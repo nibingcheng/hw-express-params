@@ -21,6 +21,21 @@ app.get('/magic/Will%20I%20Be%20A%20Millionaire', (req, res)=>{
     res.send(`Will I be a Millionaire? ` + `${ans[index]}.`);
 });
 
+// Get route for Fibonacci
+app.get('/fibonacci/:number', (req, res)=>{
+    let number = req.params.number;
+    let x = Math.sqrt(5*number*number+4);
+    let y = Math.sqrt(5*number*number-4); 
+
+    if ((x - Math.floor(x)) === 0 || (y - Math.floor(y)) === 0) {
+        res.send("Sweet Fibonacci number!");
+    }
+    else {
+        res.send("I can tell this ain't a fibonacci number. Wack.");
+    }
+})
+
+
 app.listen(3000, () => {
     console.log("Server is listening!!!")
 });
