@@ -35,6 +35,24 @@ app.get('/fibonacci/:number', (req, res)=>{
     }
 })
 
+// Get route for Fibonacci continued
+app.get('/fibonacciIndex/:index', (req, res)=>{
+    let index = req.params.index;
+    let fibonacciNum = 0;
+    if (index <= 1) {
+        res.send("1");
+    }
+    else {
+        let a = 1, b = 0, temp = 0;
+        while (index >= 0) {
+            temp = a;
+            a = a + b;
+            b = temp;
+            index = index - 1;
+        }
+        res.send(` ${b}`);
+    }
+})
 
 app.listen(3000, () => {
     console.log("Server is listening!!!")
